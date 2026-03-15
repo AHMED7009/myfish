@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسماك حضرموت - أسماك طازجة ومأكولات بحرية</title>
+    <meta name="description" content="أسماك حضرموت - وجهتك الأولى للأسماك الطازجة والمأكولات البحرية عالية الجودة">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-fish"></i>
+                <span>أسماك حضرموت</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <!-- أزرار الدخول والتسجيل للموبايل فقط -->
+                <li class="mobile-auth-item">
+                    <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="openModal('login')">
+                        <i class="fas fa-sign-in-alt"></i> دخول
+                    </button>
+                </li>
+                <li class="mobile-auth-item">
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="openModal('register')">
+                        <i class="fas fa-user-plus"></i> حساب جديد
+                    </button>
+                </li>
+                <!-- نهاية أزرار الموبايل -->
+
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#categories">التصنيفات</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#offers">العروض</a></li>
+                <li><a href="#fishery">معلومات الصيد</a></li>
+                <li><a href="#recipes">الوصفات</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="themeToggle" title="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="icon-btn" id="cartBtn" title="سلة التسوق">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                
+                <!-- أزرار الدخول والتسجيل للكمبيوتر فقط -->
+                <button class="btn btn-outline desktop-auth-item" onclick="openModal('login')">دخول</button>
+                <button class="btn btn-primary desktop-auth-item" onclick="openModal('register')">حساب جديد</button>
+                <!-- نهاية أزرار الكمبيوتر -->
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">🐟 طازج يومياً من البحر مباشرة</span>
+                <h1>أفضل الأسماك الطازجة في حضرموت</h1>
+                <p>نقدم لكم تشكيلة واسعة من الأسماك الطازجة والمأكولات البحرية عالية الجودة، مباشرة من مراكب الصيادين إلى مائدتك</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-accent">
+                        <i class="fas fa-shopping-bag"></i>
+                        تسوق الآن
+                    </a>
+                    <a href="#fishery" class="btn btn-outline" style="border-color: white; color: white;">
+                        اكتشف المزيد
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">تصنيفات المنتجات</h2>
+            <p class="section-subtitle">اختر من بين تشكيلتنا الواسعة من المنتجات البحرية</p>
+            
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterProducts('fresh')">
+                    <div class="category-img">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>الأسماك الطازجة</h3>
+                        <p>أسماك طازجة يومياً من البحر</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterProducts('popular')">
+                    <div class="category-img" style="background: linear-gradient(135deg, #f97316, #fb923c);">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>الأسماك الأكثر شعبية</h3>
+                        <p>الأفضل مبيعاً هذا الشهر</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterProducts('frozen')">
+                    <div class="category-img" style="background: linear-gradient(135deg, #0ea5e9, #38bdf8);">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>المأكولات المجمدة</h3>
+                        <p>مجمدة بطريقة صحيحة</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterProducts('canned')">
+                    <div class="category-img" style="background: linear-gradient(135deg, #eab308, #facc15);">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>التونة المعلبة</h3>
+                        <p>تشكيلة واسعة من المعلبات</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterProducts('shellfish')">
+                    <div class="category-img" style="background: linear-gradient(135deg, #ec4899, #f472b6);">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>المحار والقشريات</h3>
+                        <p>روبيان، سرطان، ومحار</p>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterProducts('other')">
+                    <div class="category-img" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>منتجات بحرية أخرى</h3>
+                        <p>إكسسوارات ومنتجات متنوعة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">جميع المنتجات</h2>
+            <p class="section-subtitle">جودة عالية وأسعار منافسة</p>
+
+            <div class="products-filter">
+                <button class="filter-btn active" onclick="filterProducts('all')">الكل</button>
+                <button class="filter-btn" onclick="filterProducts('fresh')">طازج</button>
+                <button class="filter-btn" onclick="filterProducts('popular')">شائع</button>
+                <button class="filter-btn" onclick="filterProducts('frozen')">مجمد</button>
+                <button class="filter-btn" onclick="filterProducts('canned')">معلب</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <h2 class="section-title">عروض خاصة وخصومات</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">لا تفوت فرصتنا المميزة هذا الأسبوع</p>
+
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-icon">🎣</div>
+                    <h3>خصم الأسماك الموسمية</h3>
+                    <p>خصم 20% على جميع أنواع الأسماك الموسمية</p>
+                    <div class="countdown" data-deadline="2026-03-22">
+                        <div class="countdown-item">
+                            <span id="days">00</span>
+                            <label>يوم</label>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="hours">00</span>
+                            <label>ساعة</label>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="minutes">00</span>
+                            <label>دقيقة</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-icon">📦</div>
+                    <h3>عروض الشراء بالجملة</h3>
+                    <p>اشتري 5 كيلو واحصل على كيلو مجاني</p>
+                    <button class="btn btn-accent" style="margin-top: 1rem;">اكتشف العروض</button>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-icon">⏰</div>
+                    <h3>عروض محدودة الوقت</h3>
+                    <p>توصيل مجاني للطلبات فوق 200 ريال</p>
+                    <button class="btn btn-accent" style="margin-top: 1rem;">اطلب الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fishery Info -->
+    <section class="fishery" id="fishery">
+        <div class="container">
+            <div class="fishery-content">
+                <div class="fishery-image">
+                    <img src="https://images.unsplash.com/photo-1516919549054-e08258825f80?w=800" alt="Fishing Boats">
+                </div>
+                <div class="fishery-text">
+                    <h2>معلومات عن مصايد الأسماك</h2>
+                    <p>نحن في أسماك حضرموت نلتزم بتقديم أفضل أنواع الأسماك الطازجة مباشرة من البحر. نتعامل مع صيادين محليين ذوي خبرة طويلة في الصيد.</p>
+                    <p>نضمن لك الجودة والاستدامة في جميع منتجاتنا، مع الحفاظ على البيئة البحرية وتنوعها.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> صيد يومي طازج</li>
+                        <li><i class="fas fa-check-circle"></i> التزام بالاستدامة البيئية</li>
+                        <li><i class="fas fa-check-circle"></i> فحص جودة صارم</li>
+                        <li><i class="fas fa-check-circle"></i> تبريد وتخزين مثالي</li>
+                    </ul>
+
+                    <div class="fishery-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">+15</span>
+                            <span class="stat-label">سنة خبرة</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">+50</span>
+                            <span class="stat-label">نوع سمك</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">+1000</span>
+                            <span class="stat-label">عميل سعيد</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">خدمة العملاء</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Canned Products -->
+    <section class="canned">
+        <div class="container">
+            <h2 class="section-title">المنتجات المعلبة</h2>
+            <p class="section-subtitle">تونة ومأكولات بحرية معلبة عالية الجودة</p>
+
+            <div class="canned-grid">
+                <div class="canned-card">
+                    <div class="canned-img">🥫</div>
+                    <h3>تونة بالزيت</h3>
+                    <p>تونة طبيعية 185 جرام</p>
+                    <div class="product-price">
+                        12 ريال
+                        <span class="unit">/ علبة</span>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart({id: 101, name: 'تونة بالزيت', price: 12, image: '🥫'})">
+                        <i class="fas fa-cart-plus"></i>
+                        أضف للسلة
+                    </button>
+                </div>
+
+                <div class="canned-card">
+                    <div class="canned-img" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🐟</div>
+                    <h3>سردين معلب</h3>
+                    <p>سردين طازج 125 جرام</p>
+                    <div class="product-price">
+                        8 ريال
+                        <span class="unit">/ علبة</span>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart({id: 102, name: 'سردين معلب', price: 8, image: '🐟'})">
+                        <i class="fas fa-cart-plus"></i>
+                        أضف للسلة
+                    </button>
+                </div>
+
+                <div class="canned-card">
+                    <div class="canned-img" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🦐</div>
+                    <h3>روبيان معلب</h3>
+                    <p>روبيان مقشر 200 جرام</p>
+                    <div class="product-price">
+                        25 ريال
+                        <span class="unit">/ علبة</span>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart({id: 103, name: 'روبيان معلب', price: 25, image: '🦐'})">
+                        <i class="fas fa-cart-plus"></i>
+                        أضف للسلة
+                    </button>
+                </div>
+
+                <div class="canned-card">
+                    <div class="canned-img" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🐙</div>
+                    <h3>أخطبوط معلب</h3>
+                    <p>أخطبوط طري 250 جرام</p>
+                    <div class="product-price">
+                        35 ريال
+                        <span class="unit">/ علبة</span>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart({id: 104, name: 'أخطبوط معلب', price: 35, image: '🐙'})">
+                        <i class="fas fa-cart-plus"></i>
+                        أضف للسلة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Selling -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">الأكثر مبيعاً</h2>
+            <p class="section-subtitle">الأسماك المفضلة لدى عملائنا</p>
+
+            <div class="products-grid" id="bestSellingGrid">
+                <!-- Best selling products loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">آراء العملاء</h2>
+            <p class="section-subtitle">ماذا يقول عملاؤنا عنا</p>
+
+            <div class="reviews-slider">
+                <div class="reviews-track" id="reviewsTrack">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">أح</div>
+                            <div class="review-meta">
+                                <h4>أحمد محمد</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"جودة ممتازة وأسماك طازجة دائماً. الخدمة سريعة والتوصيل في الوقت المحدد. أنصح بالتعامل معهم بشدة."</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar" style="background: linear-gradient(135deg, #f97316, #fb923c);">فا</div>
+                            <div class="review-meta">
+                                <h4>فاطمة علي</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"أفضل محل أسماك في حضرموت. الأسعار مناسبة والجودة عالية. التونة المعلبة رائعة جداً."</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar" style="background: linear-gradient(135deg, #10b981, #34d399);">خا</div>
+                            <div class="review-meta">
+                                <h4>خالد سعيد</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"أتعامل معهم منذ سنتين ولم أندم أبداً. الأسماك دائماً طازجة والنظافة ممتازة. شكراً لكم."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipes -->
+    <section class="recipes" id="recipes">
+        <div class="container">
+            <h2 class="section-title">وصفات وطرق التحضير</h2>
+            <p class="section-subtitle">تعلم كيفية تحضير أشهى الأطباق البحرية</p>
+
+            <div class="recipes-grid">
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600" alt="Grilled Fish">
+                        <div class="recipe-time">
+                            <i class="far fa-clock"></i>
+                            30 دقيقة
+                        </div>
+                    </div>
+                    <div class="recipe-content">
+                        <h3>سمك مشوي بالليمون</h3>
+                        <p>طريقة سهلة ولذيذة لتحضير السمك المشوي مع الليمون والأعشاب</p>
+                        <button class="btn btn-outline">اقرأ الوصفة</button>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600" alt="Fish Soup">
+                        <div class="recipe-time">
+                            <i class="far fa-clock"></i>
+                            45 دقيقة
+                        </div>
+                    </div>
+                    <div class="recipe-content">
+                        <h3>شوربة السمك التقليدية</h3>
+                        <p>شوربة دسمة وغنية بالنكهات مع الخضار والتوابل</p>
+                        <button class="btn btn-outline">اقرأ الوصفة</button>
+                    </div>
+                </div>
+
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600" alt="Fried Fish">
+                        <div class="recipe-time">
+                            <i class="far fa-clock"></i>
+                            25 دقيقة
+                        </div>
+                    </div>
+                    <div class="recipe-content">
+                        <h3>سمك مقلي مقرمش</h3>
+                        <p>طريقة القلي المثالية للحصول على سمك مقرمش من الخارج وطري من الداخل</p>
+                        <button class="btn btn-outline">اقرأ الوصفة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800" alt="About Us">
+                    <div class="about-badge">
+                        <span class="years">+20</span>
+                        <span>سنة خبرة</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>عن متجر أسماك حضرموت</h2>
+                    <p>نحن في أسماك حضرموت نؤمن بأن الجودة والطزاجة هما أساس نجاحنا. منذ أكثر من عشرين عاماً، نخدم عملاءنا بأفضل أنواع الأسماك والمأكولات البحرية.</p>
+                    <p>رؤيتنا هي أن نكون الوجهة الأولى للأسماك الطازجة في حضرموت، مع الالتزام بأعلى معايير الجودة والاستدامة البيئية.</p>
+                    <p>نعمل مباشرة مع الصيادين المحليين لضمان حصولك على أفضل المنتجات بأفضل الأسعار.</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">
+                        <i class="fas fa-play-circle"></i>
+                        شاهد قصتنا
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <p class="section-subtitle">إجابات على استفساراتك</p>
+
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>كيف يمكنني طلب الأسماك؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        يمكنك الطلب عبر الموقع الإلكتروني أو الاتصال بنا مباشرة على الرقم المذكور في صفحة التواصل. نوفر أيضاً خدمة الطلب عبر الواتساب.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي طرق الدفع المتاحة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نقبل الدفع نقداً عند الاستلام، أو عبر التحويل البنكي، أو باستخدام البطاقات الائتمانية.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل تقدمون خدمة التوصيل؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، نوفر خدمة التوصيل لجميع مناطق المدينة. التوصيل مجاني للطلبات فوق 200 ريال.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كيف أحافظ على طزاجة السمك؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        ننصح بحفظ السمك في الثلاجة عند درجة حرارة 0-4 درجة مئوية، واستهلاكه خلال 24-48 ساعة. يمكن أيضاً تجميده لحفظه لفترة أطول.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكنني إرجاع المنتج؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        بسبب طبيعة المنتجات الطازجة، لا نقبل الإرجاع إلا في حالة وجود عيب في المنتج. يرجى التواصل معنا فور استلام الطلب.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>تواصل معنا</h3>
+                    <p>نحن هنا لمساعدتك. لا تتردد في التواصل معنا لأي استفسار أو طلب.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>العنوان</h4>
+                                <p>سوق السمك الرئيسي، المكلا، حضرموت، اليمن</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>الهاتف</h4>
+                                <p dir="ltr">+967 5xx xxx xxx</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>البريد الإلكتروني</h4>
+                                <p>info@hadhramautfish.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>ساعات العمل</h4>
+                                <p>يومياً من 6 صباحاً حتى 10 مساءً</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" required placeholder="أدخل اسمك الكامل">
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" required placeholder="example@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" required placeholder="05xxxxxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label>الرسالة</label>
+                            <textarea required placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>أسماك حضرموت</h3>
+                    <p>وجهتك الأولى للأسماك الطازجة والمأكولات البحرية عالية الجودة في حضرموت.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-left"></i> المنتجات</a></li>
+                        <li><a href="#offers"><i class="fas fa-chevron-left"></i> العروض</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الأسئلة الشائعة</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الإرجاع</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> شروط الاستخدام</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك للحصول على أحدث العروض والخصومات</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني">
+                        <button type="submit" class="btn btn-accent">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 أسماك حضرموت. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> سلة التسوق</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">0 ريال</span>
+            </div>
+            <button class="checkout-btn">
+                <i class="fas fa-credit-card"></i>
+                إتمام الشراء
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('login')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>تسجيل الدخول</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>البريد الإلكتروني أو رقم الهاتف</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">دخول</button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-muted);">
+                    ليس لديك حساب؟ <a href="#" onclick="closeModal('login'); openModal('register')" style="color: var(--secondary);">سجل الآن</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('register')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>إنشاء حساب جديد</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">إنشاء الحساب</button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-muted);">
+                    لديك حساب بالفعل؟ <a href="#" onclick="closeModal('register'); openModal('login')" style="color: var(--secondary);">سجل الدخول</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">تمت الإضافة بنجاح</span>
+    </div>
+    <!-- Recipe Detail Modal -->
+<div class="modal" id="recipeModal">
+    <div class="modal-content recipe-modal-content">
+        <button class="close-modal" onclick="closeRecipeModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="recipe-modal-image">
+            <img id="recipeModalImg" src="" alt="Recipe Image">
+        </div>
+        <div class="recipe-modal-body">
+            <h2 id="recipeModalTitle">عنوان الوصفة</h2>
+            <div class="recipe-meta">
+                <span><i class="far fa-clock"></i> <span id="recipeModalTime">30 دقيقة</span></span>
+                <span><i class="fas fa-signal"></i> صعوبة: <span id="recipeModalDifficulty">متوسطة</span></span>
+                <span><i class="fas fa-users"></i> <span id="recipeModalServings">4 أشخاص</span></span>
+            </div>
+            <div class="recipe-section">
+                <h3><i class="fas fa-list"></i> المقادير</h3>
+                <ul id="recipeModalIngredients" class="recipe-ingredients"></ul>
+            </div>
+            <div class="recipe-section">
+                <h3><i class="fas fa-fire"></i> طريقة التحضير</h3>
+                <ol id="recipeModalSteps" class="recipe-steps"></ol>
+            </div>
+            <div class="recipe-tips">
+                <h4><i class="fas fa-lightbulb"></i> نصائح الشيف</h4>
+                <p id="recipeModalTips"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
