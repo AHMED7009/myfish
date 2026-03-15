@@ -1,15 +1,15 @@
 // Products Data
 const products = [
-    { id: 1, name: 'سمك هامور', price: 80, unit: 'كيلو', category: 'fresh', popular: true, image: '🐟', badge: 'new' },
-    { id: 2, name: 'سمك شعري', price: 60, unit: 'كيلو', category: 'fresh', popular: true, image: '🐠', badge: 'sale' },
-    { id: 3, name: 'سمك كنعد', price: 70, unit: 'كيلو', category: 'fresh', popular: false, image: '🐡', badge: null },
-    { id: 4, name: 'روبيان طازج', price: 120, unit: 'كيلو', category: 'shellfish', popular: true, image: '🦐', badge: 'new' },
-    { id: 5, name: 'سرطان بحر', price: 150, unit: 'كيلو', category: 'shellfish', popular: false, image: '🦀', badge: null },
-    { id: 6, name: 'سمك فيليه مجمد', price: 50, unit: 'كيلو', category: 'frozen', popular: true, image: '🧊', badge: 'sale' },
-    { id: 7, name: 'كاليماري', price: 90, unit: 'كيلو', category: 'frozen', popular: false, image: '🦑', badge: null },
-    { id: 8, name: 'سمك التونة', price: 50, unit: 'كيلو', category: 'shellfish', popular: true, image: '🐟', badge: null },
-    { id: 9, name: 'سمك بلطي', price: 40, unit: 'كيلو', category: 'fresh', popular: false, image: '🐟', badge: null },
-    { id: 10, name: 'سمك سردين', price: 35, unit: 'كيلو', category: 'fresh', popular: true, image: '🐠', badge: 'sale' },
+    { id: 1, name: 'سمك هامور', price: 80, unit: 'كيلو', category: 'fresh', popular: true, image: 'img/هامورا.jfif', badge: 'new' },
+    { id: 2, name: 'سمك شعري', price: 60, unit: 'كيلو', category: 'fresh', popular: true, image: 'img/شعري.jfif', badge: 'sale' },
+    { id: 3, name: 'سمك كنعد', price: 70, unit: 'كيلو', category: 'fresh', popular: false, image: 'img/كنعد.jfif', badge: null },
+    { id: 4, name: 'روبيان طازج', price: 120, unit: 'كيلو', category: 'shellfish', popular: true, image: 'img/روبيان.jfif', badge: 'new' },
+    { id: 5, name: 'سرطان بحر', price: 150, unit: 'كيلو', category: 'shellfish', popular: false, image: 'img/سرطان.jfif', badge: null },
+    { id: 6, name: 'سمك فيليه مجمد', price: 50, unit: 'كيلو', category: 'frozen', popular: true, image: 'img/فيلية.jfif', badge: 'sale' },
+    { id: 7, name: 'كاليماري', price: 90, unit: 'كيلو', category: 'frozen', popular: false, image: 'img/كاليماري.jfif', badge: null },
+    { id: 8, name: 'سمك التونة', price: 50, unit: 'كيلو', category: 'shellfish', popular: true, image: 'img/تونه.jfif', badge: null },
+    { id: 9, name: 'سمك بلطي', price: 40, unit: 'كيلو', category: 'fresh', popular: false, image: 'img/بلطي.jfif', badge: null },
+    { id: 10, name: 'سمك سردين', price: 35, unit: 'كيلو', category: 'fresh', popular: true, image: 'img/سردين.jfif', badge: 'sale' },
 ];
 
 // Cart State
@@ -64,9 +64,7 @@ function createProductCard(product) {
     card.className = 'product-card';
     card.innerHTML = `
         <div class="product-image">
-            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 6rem;">
-                ${product.image}
-            </div>
+            <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
             ${product.badge ? `<span class="badge badge-${product.badge} product-badge">${product.badge === 'new' ? 'جديد' : 'خصم'}</span>` : ''}
             <div class="product-actions">
                 <button class="action-btn" title="عرض سريع"><i class="fas fa-eye"></i></button>
@@ -159,7 +157,9 @@ function updateCart() {
         const itemEl = document.createElement('div');
         itemEl.className = 'cart-item';
         itemEl.innerHTML = `
-            <div class="cart-item-image">${item.image}</div>
+            <div class="cart-item-image">
+                <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            </div>
             <div class="cart-item-details">
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-price">${item.price} ريال/${item.unit}</div>
