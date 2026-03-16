@@ -1785,3 +1785,8 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+.go{
+    color: #e2e8f0;
+    text-decoration: none;
+}
